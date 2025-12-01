@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/language_partner.dart';
-import 'learning_journey_screen.dart';
 
 class PartnerProfileScreen extends StatelessWidget {
   const PartnerProfileScreen({super.key, required this.partner});
@@ -174,23 +173,6 @@ class PartnerProfileScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            FilledButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => LearningJourneyScreen(partner: partner),
-                  ),
-                );
-              },
-              style: FilledButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                backgroundColor: const Color(0xFF4C43FF),
-              ),
-              child: const Text(
-                'View learning journey',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
           ],
         ),
       ),

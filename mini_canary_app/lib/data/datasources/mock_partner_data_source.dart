@@ -1,13 +1,11 @@
 import 'dart:async';
 
 import '../../domain/entities/availability_slot.dart';
-import '../../domain/entities/community_insight.dart';
 import '../../domain/entities/language_partner.dart';
 import '../../domain/entities/session_plan.dart';
 
 abstract class PartnerDataSource {
   Future<List<LanguagePartner>> fetchPartners();
-  Future<CommunityInsights> fetchInsights();
 }
 
 class MockPartnerDataSource implements PartnerDataSource {
@@ -16,39 +14,7 @@ class MockPartnerDataSource implements PartnerDataSource {
     await Future<void>.delayed(const Duration(milliseconds: 600));
     return _mockPartners;
   }
-
-  @override
-  Future<CommunityInsights> fetchInsights() async {
-    await Future<void>.delayed(const Duration(milliseconds: 350));
-    return _insights;
-  }
 }
-
-const _insights = CommunityInsights(
-  stats: {
-    'Matches this week': '28 (+6%)',
-    'Average feedback score': '4.8 / 5',
-    'Hours scheduled': '62 hrs',
-    'Languages trending': 'French, Portuguese, Japanese',
-  },
-  events: [
-    CommunityEvent(
-      day: 'Mon',
-      title: 'Parisian slang cafe',
-      description: 'Drop-in Q&A with Jules',
-    ),
-    CommunityEvent(
-      day: 'Wed',
-      title: 'Portuguese verb lab',
-      description: 'Interactive verb drills',
-    ),
-    CommunityEvent(
-      day: 'Sat',
-      title: 'Global listening party',
-      description: 'Stream indie playlists together',
-    ),
-  ],
-);
 
 const _mockPartners = [
   LanguagePartner(
@@ -60,7 +26,8 @@ const _mockPartners = [
     timezone: 'GMT+9',
     learningLanguage: 'French',
     learningFlag: '🇫🇷',
-    bio: 'Product designer building calm tech, loves rooftop picnics and indie playlists.',
+    bio:
+        'Product designer building calm tech, loves rooftop picnics and indie playlists.',
     longBio:
         'Sofia is focusing on spontaneous French conversation so she can keep up while consulting in Paris this fall. She already journals daily in Korean and English and now wants to bring that flow to French.',
     hobbies: ['Indie Cafés', 'Urban Sketching', 'K-Drama nights'],
@@ -91,27 +58,31 @@ const _mockPartners = [
     sessionPlan: [
       SessionPlan(
         title: 'Day 1 · Warm-up cafe chat',
-        description: 'Trade morning routines and design wins while focusing on filler phrases.',
+        description:
+            'Trade morning routines and design wins while focusing on filler phrases.',
         focus: ['Small talk', 'Confidence'],
         day: 'Tue',
         iconKey: 'coffee',
       ),
       SessionPlan(
         title: 'Day 3 · Audio sketch lab',
-        description: 'Describe a Paris street scene using senses, then sketch it together.',
+        description:
+            'Describe a Paris street scene using senses, then sketch it together.',
         focus: ['Storytelling', 'Sensory vocab'],
         day: 'Thu',
         iconKey: 'brush',
       ),
       SessionPlan(
         title: 'Day 5 · After hours feedback',
-        description: 'Role-play a design crit entirely in French with live corrections.',
+        description:
+            'Role-play a design crit entirely in French with live corrections.',
         focus: ['Professional tone', 'Listening'],
         day: 'Sun',
         iconKey: 'design',
       ),
     ],
-    matchHook: 'Sofia hosts Sunday "slow French" playlists and loves meeting curious builders.',
+    matchHook:
+        'Sofia hosts Sunday "slow French" playlists and loves meeting curious builders.',
   ),
   LanguagePartner(
     id: 'luca',
@@ -122,7 +93,8 @@ const _mockPartners = [
     timezone: 'GMT+1',
     learningLanguage: 'Portuguese',
     learningFlag: '🇵🇹',
-    bio: "Food anthropologist documenting grandmas' recipes, obsessed with vinyl collecting.",
+    bio:
+        "Food anthropologist documenting grandmas' recipes, obsessed with vinyl collecting.",
     longBio:
         'Luca is researching Lusophone home kitchens and wants to document stories in native Portuguese. He enjoys multimedia swaps—audio notes, recipe cards, anything tactile.',
     hobbies: ['Vinyl digging', 'Cycling', 'Street photography'],
@@ -160,20 +132,23 @@ const _mockPartners = [
       ),
       SessionPlan(
         title: 'Day 2 · Recipe swap',
-        description: 'Describe your comfort dish ingredients and senses in Portuguese.',
+        description:
+            'Describe your comfort dish ingredients and senses in Portuguese.',
         focus: ['Food vocab', 'Listening'],
         day: 'Wed',
         iconKey: 'restaurant',
       ),
       SessionPlan(
         title: 'Day 4 · Market interview',
-        description: 'Role-play interviewing a Lisbon market vendor with follow-ups.',
+        description:
+            'Role-play interviewing a Lisbon market vendor with follow-ups.',
         focus: ['Confidence', 'Question flow'],
         day: 'Sat',
         iconKey: 'mic',
       ),
     ],
-    matchHook: 'Luca will probably send you fresh vinyl finds between sessions.',
+    matchHook:
+        'Luca will probably send you fresh vinyl finds between sessions.',
   ),
   LanguagePartner(
     id: 'amara',
@@ -184,7 +159,8 @@ const _mockPartners = [
     timezone: 'GMT+0',
     learningLanguage: 'Japanese',
     learningFlag: '🇯🇵',
-    bio: 'Climate storyteller prototyping low-tech field recorders. Loves ocean swims.',
+    bio:
+        'Climate storyteller prototyping low-tech field recorders. Loves ocean swims.',
     longBio:
         'Amara wants to document coastal communities in Japan later this year. She learns through tactile projects and collaborative mood-boards.',
     hobbies: ['Analog photography', 'Surfing', 'Sound design'],
@@ -215,7 +191,8 @@ const _mockPartners = [
     sessionPlan: [
       SessionPlan(
         title: 'Day 1 · Sound postcard',
-        description: 'Swap ambient sounds and narrate them with new adjectives.',
+        description:
+            'Swap ambient sounds and narrate them with new adjectives.',
         focus: ['Listening', 'Imagery'],
         day: 'Tue',
         iconKey: 'waves',
@@ -229,7 +206,8 @@ const _mockPartners = [
       ),
       SessionPlan(
         title: 'Day 5 · Reflection swim',
-        description: 'Language reflection prompts right after a swim (metaphorically).',
+        description:
+            'Language reflection prompts right after a swim (metaphorically).',
         focus: ['Reflection', 'Grammar'],
         day: 'Sun',
         iconKey: 'pool',
@@ -246,7 +224,8 @@ const _mockPartners = [
     timezone: 'GMT-6',
     learningLanguage: 'German',
     learningFlag: '🇩🇪',
-    bio: 'Hardware PM by day, synth tinkerer by night. Collects brutalist postcards.',
+    bio:
+        'Hardware PM by day, synth tinkerer by night. Collects brutalist postcards.',
     longBio:
         'Mina is preparing for a Berlin assignment. She wants crisp pronunciation and playful vocabulary to chat with engineers and artists alike.',
     hobbies: ['Synth jams', 'Museum hopping', 'Rock climbing'],

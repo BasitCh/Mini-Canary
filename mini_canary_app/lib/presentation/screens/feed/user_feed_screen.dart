@@ -3,12 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/di/injection_container.dart';
 import '../../../domain/entities/language_partner.dart';
-import '../../bloc/journey/journey_cubit.dart';
 import '../../bloc/match_flow/match_flow_cubit.dart';
 import '../../bloc/partner_feed/partner_feed_bloc.dart';
 import '../../widgets/match_modal.dart';
 import '../../widgets/partner_card.dart';
-import '../journey/journey_overview_screen.dart';
 import '../profile/partner_profile_screen.dart';
 
 class UserFeedScreen extends StatelessWidget {
@@ -45,17 +43,6 @@ class UserFeedScreen extends StatelessWidget {
     );
   }
 
-  void _openJourneyInsights(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => BlocProvider(
-          create: (_) => sl<JourneyCubit>()..loadInsights(),
-          child: const JourneyOverviewScreen(),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,13 +51,7 @@ class UserFeedScreen extends StatelessWidget {
           'Mini Canary Matches',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.timeline_outlined),
-            tooltip: 'Community insights',
-            onPressed: () => _openJourneyInsights(context),
-          ),
-        ],
+      
       ),
       body: SafeArea(
         child: BlocBuilder<PartnerFeedBloc, PartnerFeedState>(

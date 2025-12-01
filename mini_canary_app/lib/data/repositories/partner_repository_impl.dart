@@ -1,4 +1,3 @@
-import '../../domain/entities/community_insight.dart';
 import '../../domain/entities/language_partner.dart';
 import '../../domain/repositories/partner_repository.dart';
 import '../datasources/mock_partner_data_source.dart';
@@ -13,8 +12,4 @@ class PartnerRepositoryImpl implements PartnerRepository {
     return _dataSource.fetchPartners();
   }
 
-  @override
-  Future<CommunityInsights> fetchCommunityInsights() {
-    return _dataSource.fetchInsights();
-  }
 }
