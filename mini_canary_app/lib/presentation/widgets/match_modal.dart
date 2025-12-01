@@ -74,28 +74,18 @@ class _MatchedState extends StatelessWidget {
       key: const ValueKey('matched'),
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Icon(
-          Icons.celebration,
-          color: Colors.orangeAccent,
-          size: 44,
-        ),
+        const Icon(Icons.celebration, color: Colors.orangeAccent, size: 44),
         const SizedBox(height: 12),
         Text(
           'Yes! You matched with ${partner.firstName} 🎉',
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-          ),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: 12),
         Text(
           partner.matchHook,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.grey.shade700,
-            height: 1.4,
-          ),
+          style: TextStyle(color: Colors.grey.shade700, height: 1.4),
         ),
         const SizedBox(height: 20),
         FilledButton(
@@ -103,15 +93,12 @@ class _MatchedState extends StatelessWidget {
             Navigator.of(context).pop(true);
           },
           style: FilledButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 14),
+            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
             backgroundColor: const Color(0xFFFFA726),
           ),
           child: const Text(
             'View Profile',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
           ),
         ),
         const SizedBox(height: 12),
